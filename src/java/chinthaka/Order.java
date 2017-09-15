@@ -1,5 +1,13 @@
 package chinthaka;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -22,12 +30,12 @@ public class Order {
      * @param id
      * @return String menu_Item_details
      */
-    public String getMenuItemDetails(int id) {
+    public JSONObject getMenuItemDetails(int id) {
 
         String getMenuItemDetails = " SELECT id,name,unit_price,units FROM Menu WHERE id ="+id;
 
         try {
-            Statement stmt = JdbcTest1.conn.createStatement();
+            Statement stmt = FactoryPatternDemo.conn4.createStatement();
             ResultSet rs = stmt.executeQuery(getMenuItemDetails);
 
 
@@ -43,49 +51,24 @@ public class Order {
             System.err.println("D'oh! Got an exception!");
             System.err.println(e.getMessage());
         }
+
+
+
+        JSONObject menu_Item_details;
+        menu_Item_details = new JSONObject();
+        try {
+            menu_Item_details.put("pizza_item_unit_price",pizza_item_unit_price);
+            menu_Item_details.put("pizza_item_available_quantity",pizza_item_available_quantity);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+
         return menu_Item_details;
     }
 
-    /**
-     * @param null;
-     * return null;
-     */
-    public void ordernow(){
-        System.out.println("Do you want to order now");
-        System.out.println("Yes --> 1 || No --> 2");
-        String opinion = new Scanner(System.in).next();
-        if(opinion.equals("1")){
-            System.out.println("Nice! You are in a process to order");
-            System.out.println("What amount of pizza do you want??");
-            int amount = new Scanner(System.in).nextInt();
-            System.out.println("You are going to order "+amount);
-            totalprice = amount * Double.parseDouble(pizza_item_unit_price);
-            System.out.println("Total cost will be " + totalprice);
 
 
-            String querynew = " insert into  OrderNewCorrected (customer_id,totalprice,menu_id)"
-                    + " values (?, ?, ?)";
-
-            try {
-
-
-                PreparedStatement preparedStmtnew = JdbcTest1.conn.prepareStatement(querynew);
-
-                preparedStmtnew.setInt(1, 10);
-//                System.out.println(Integer.parseInt(Customer.getCustomerId));
-                preparedStmtnew.setDouble(2, 1300.00);
-                preparedStmtnew.setInt(3,11);
-//                preparedStmtnew.setInt(3, Integer.parseInt(pizza_item_id));
-//                System.out.println(Integer.parseInt(pizza_item_id));
-                preparedStmtnew.execute();
-
-            }catch (Exception e)
-            {
-                System.err.println("Finally Here");
-                System.err.println(e.getMessage());
-            }
-            System.out.println("Order Request has been sent, Please wait..");
-
-        }
-    }
 }

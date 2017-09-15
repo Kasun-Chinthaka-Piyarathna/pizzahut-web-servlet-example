@@ -1,43 +1,71 @@
 package chinthaka;
 
+import org.json.JSONObject;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.Scanner;
 
 /**
  * Created by chinthaka on 9/12/17.
  * used Factory Design Patterns and some of oop concepts
  */
-public class FactoryPatternDemo {
-    /**
-     *
-     * @param args
-     */
-    public static void main(String[] args){
-
-        Scanner scn = new Scanner(System.in);
-
-        JdbcTest1 obj = new JdbcTest1();
-        obj.checkconnection();
-
-        Customer customer = new Customer();
-        customer.signUp();
+public class FactoryPatternDemo extends HttpServlet {
+    public static Connection conn4;
+    public static String choice;
 
 
-        System.out.println("Welcome to Pizza Hut");
-        System.out.println("Today's MENU");
-        System.out.println("Chicken Bacon -->1 || Cheese Lovers -->2 || Devilled Chicken -->3 || Cheese & Tomato -->4 || CheesyOnion -->5");
-        System.out.println("Please select your choice");
-        String choice = scn.next();
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+
+        try
+        {
+            // Step 1: "Load" the JDBC driver
+            Class.forName("com.mysql.jdbc.Driver");
+
+            // Step 2: Establish the connection to the database
+            String url = "jdbc:mysql://localhost:3306/pizzahut";
+            conn4 = DriverManager.getConnection(url, "root", "password");
+            System.out.println(conn4);
 
 
 
+        }
+        catch (Exception e)
+        {
+            System.err.println("D'oh! Got an exception while connecting to the db!");
+            System.err.println(e);
+        }
+
+
+
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+
+        choice=request.getParameter("value");
+        System.out.println(choice);
 
         ShapeFactory shapeFactory = new ShapeFactory();
 
         //get an object of Circle and call its draw method.
         Pizza shape1 = shapeFactory.getShape(choice);
 
+
+        response.setContentType("application/json");
+        PrintWriter out2 = response.getWriter();
+        out2.println(shape1.draw()) ;
+        out2.close();
+
         //call draw method of Circle
-        shape1.draw();
+//        shape1.draw();
+//        System.out.println("Ayyyo salli "+shape1.draw());
 
 
     }
@@ -48,16 +76,15 @@ public class FactoryPatternDemo {
 class ShapeFactory {
 
     /**
-     *
      * @param shapeType
      * @return Pizza
      */
     //use getShape method to get object of type shape
-    public Pizza getShape(String shapeType){
-        if(shapeType == null){
+    public Pizza getShape(String shapeType) {
+        if (shapeType == null) {
             return null;
         }
-        if(shapeType.equalsIgnoreCase("1")){
+        if (shapeType.equalsIgnoreCase("1")) {
             return new ChickenBacon();
 
         } else if(shapeType.equalsIgnoreCase("2")){
@@ -75,6 +102,8 @@ class ShapeFactory {
         }
 
 
+//        return null;
+
         return null;
     }
 }
@@ -86,12 +115,13 @@ class ChickenBacon implements Pizza {
      * return null;
      */
     @Override
-    public void draw() {
+    public JSONObject draw() {
+
 
         System.out.println("You have chosen Chicken Bacon");
         Order order = new Order();
-        System.out.println( order.getMenuItemDetails(1) + "\n");
-        order.ordernow();
+         return order.getMenuItemDetails(1) ;
+//        order.ordernow();
     }
 }
 
@@ -102,11 +132,11 @@ class CheeseLovers implements Pizza {
      * return null;
      */
     @Override
-    public void draw() {
+    public JSONObject draw() {
         System.out.println("You have chosen Cheese Lovers");
         Order order = new Order();
-        System.out.println( order.getMenuItemDetails(2) + "\n");
-        order.ordernow();
+      return order.getMenuItemDetails(2);
+//        order.ordernow();
 
     }
 }
@@ -118,11 +148,11 @@ class DevilledChicken implements Pizza {
      * return null;
      */
     @Override
-    public void draw() {
+    public JSONObject draw() {
         System.out.println("You have chosen Devilled Chicken");
         Order order = new Order();
-        System.out.println( order.getMenuItemDetails(3) + "\n");
-        order.ordernow();
+        return  order.getMenuItemDetails(3);
+//        order.ordernow();
     }
 }
 
@@ -132,11 +162,11 @@ class CheeseTomato implements Pizza {
      * return null;
      */
     @Override
-    public void draw() {
+    public JSONObject draw() {
         System.out.println("You have chosen Cheese Tomato");
         Order order = new Order();
-        System.out.println( order.getMenuItemDetails(4) + "\n");
-        order.ordernow();
+      return order.getMenuItemDetails(4);
+//        order.ordernow();
     }
 }
 
@@ -147,14 +177,14 @@ class CheesyOnion implements Pizza {
      */
 
     @Override
-    public void draw() {
+    public JSONObject draw() {
         System.out.println("You have chosen Cheesy Onion");
         Order order = new Order();
-        System.out.println( order.getMenuItemDetails(5) + "\n");
-        order.ordernow();
+      return order.getMenuItemDetails(5);
+//        order.ordernow();
     }
 }
 
 interface Pizza {
-    void draw();
+    JSONObject draw();
 }

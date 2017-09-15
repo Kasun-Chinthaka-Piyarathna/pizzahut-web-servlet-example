@@ -19,30 +19,6 @@ public class Register extends HttpServlet {
         String p=request.getParameter("userEmail");
         String e=request.getParameter("userComment");
 
-
-//        try{
-//            Class.forName("oracle.jdbc.driver.OracleDriver");
-//            Connection con=DriverManager.getConnection(
-//                    "jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-//
-//            PreparedStatement ps=con.prepareStatement(
-//                    "insert into registeruser values(?,?,?,?)");
-//
-//            ps.setString(1,n);
-//            ps.setString(2,p);
-//            ps.setString(3,e);
-//            ps.setString(4,c);
-//
-//            int i=ps.executeUpdate();
-//            if(i>0)
-//                out.print("You are successfully registered...");
-//
-//
-//        }catch (Exception e2) {
-//            System.out.println(e2);
-//        }
-//
-//        out.close();
         System.out.println(n);
         System.out.println(p);
         System.out.println(e);

@@ -4,17 +4,62 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-        <servlet>
-            <servlet-name>Register</servlet-name>
-            <servlet-class>chinthaka.Register</servlet-class>
-        </servlet>
+        <!--<servlet>-->
+            <!--<servlet-name>Register</servlet-name>-->
+            <!--<servlet-class>chinthaka.Register</servlet-class>-->
+        <!--</servlet>-->
 
-        <servlet-mapping>
-            <servlet-name>Register</servlet-name>
-            <url-pattern>/servlet/Register</url-pattern>
-        </servlet-mapping>
+        <!--<servlet-mapping>-->
+            <!--<servlet-name>Register</servlet-name>-->
+            <!--<url-pattern>/servlet/Register</url-pattern>-->
+        <!--</servlet-mapping>-->
 
-        <welcome-file-list>
+
+    <servlet>
+        <servlet-name>signup</servlet-name>
+        <servlet-class>chinthaka.Signup</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>signup</servlet-name>
+        <url-pattern>/servlet/signup</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>signin</servlet-name>
+        <servlet-class>chinthaka.Signin</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>signin</servlet-name>
+        <url-pattern>/servlet/signin</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <servlet-name>menu</servlet-name>
+        <servlet-class>chinthaka.FactoryPatternDemo</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>menu</servlet-name>
+        <url-pattern>/servlet/menu</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>contact</servlet-name>
+        <servlet-class>chinthaka.contact</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>contact</servlet-name>
+        <url-pattern>/servlet/contact</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
             <welcome-file>register.html</welcome-file>
         </welcome-file-list>
 
