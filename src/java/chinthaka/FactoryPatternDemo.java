@@ -16,6 +16,7 @@ import java.util.Scanner;
  * Created by chinthaka on 9/12/17.
  * used Factory Design Patterns and some of oop concepts
  */
+//Here I have used Encapsulation OOP concept.
 public class FactoryPatternDemo extends HttpServlet {
     public static Connection conn4;
     public static String choice;
@@ -72,7 +73,7 @@ public class FactoryPatternDemo extends HttpServlet {
 
 
 }
-
+//Here I have used Encapsulation OOP concept.
 class ShapeFactory {
 
     /**
@@ -107,13 +108,14 @@ class ShapeFactory {
         return null;
     }
 }
-
+//Here I have used Encapsulation & Inheritance OOP concepts.
 class ChickenBacon implements Pizza {
 
     /**
      * @param null;
      * return null;
      */
+    //Here I have used Polymorphism OOP concept.
     @Override
     public JSONObject draw() {
 
@@ -124,13 +126,14 @@ class ChickenBacon implements Pizza {
 //        order.ordernow();
     }
 }
-
+//Here I have used Encapsulation & Inheritance OOP concepts.
 class CheeseLovers implements Pizza {
 
     /**
      * @param null;
      * return null;
      */
+    //Here I have used Polymorphism OOP concept.
     @Override
     public JSONObject draw() {
         System.out.println("You have chosen Cheese Lovers");
@@ -140,13 +143,14 @@ class CheeseLovers implements Pizza {
 
     }
 }
-
+//Here I have used Encapsulation & Inheritance OOP concepts.
 class DevilledChicken implements Pizza {
 
     /**
      * @param null;
      * return null;
      */
+    //Here I have used Polymorphism OOP concept.
     @Override
     public JSONObject draw() {
         System.out.println("You have chosen Devilled Chicken");
@@ -155,12 +159,13 @@ class DevilledChicken implements Pizza {
 //        order.ordernow();
     }
 }
-
+//Here I have used Encapsulation & Inheritance OOP concepts.
 class CheeseTomato implements Pizza {
     /**
      * @param null;
      * return null;
      */
+    //Here I have used Polymorphism OOP concept.
     @Override
     public JSONObject draw() {
         System.out.println("You have chosen Cheese Tomato");
@@ -169,13 +174,13 @@ class CheeseTomato implements Pizza {
 //        order.ordernow();
     }
 }
-
+//Here I have used Encapsulation O& Inheritance OOP concepts.
 class CheesyOnion implements Pizza {
     /**
      * @param null;
      * return null;
      */
-
+    //Here I have used Polymorphism OOP concept.
     @Override
     public JSONObject draw() {
         System.out.println("You have chosen Cheesy Onion");
@@ -184,7 +189,7 @@ class CheesyOnion implements Pizza {
 //        order.ordernow();
     }
 }
-
+//Here I have used Abstraction OOP concept.
 interface Pizza {
     JSONObject draw();
 }

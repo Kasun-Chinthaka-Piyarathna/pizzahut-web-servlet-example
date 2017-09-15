@@ -16,6 +16,8 @@ import java.util.Scanner;
 /**
  * Created by chinthaka on 9/12/17.
  */
+
+//Here I have used Encapsulation OOP concept.
 public class Order {
 
     private String menu_Item_details;

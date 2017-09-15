@@ -8,6 +8,8 @@ import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
+
+//Here I have used Encapsulation and Inheritance OOP concept.
 public class Register extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

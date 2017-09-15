@@ -15,7 +15,7 @@ import java.sql.*;
  * Created by chinthaka on 9/14/17.
  */
 
-
+//Here I have used Inheritance and Encapsulation OOP concepts.
 public class contact extends HttpServlet {
 
 

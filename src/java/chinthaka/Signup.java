@@ -11,6 +11,8 @@ import java.sql.*;
 /**
  * Created by chinthaka on 9/14/17.
  */
+
+//Here I have used Encapsulation and Inheritance OOP concept.
 public class Signup extends HttpServlet {
 
     public static Connection conn2;

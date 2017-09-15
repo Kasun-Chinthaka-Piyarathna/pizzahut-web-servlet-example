@@ -1,5 +1,6 @@
 # pizzahut-web-servlet-example
 Hsenid Mobile Internships
+This is the sample database.You can copy this content to a pizzahut.sql(something like this) and re-import that to the mysql.
 -- MySQL dump 10.13  Distrib 5.6.27, for linux-glibc2.5 (x86_64)
 --
 -- Host: localhost    Database: pizzahut

@@ -19,7 +19,7 @@ import java.sql.Statement;
  */
 
 //request.getRequestDispatcher("/WEB-INF/hello.jsp").forward(request, response);
-
+//Here I have used Encapsulation and Inheritance OOP concept.
 public class Signin extends HttpServlet {
 
 

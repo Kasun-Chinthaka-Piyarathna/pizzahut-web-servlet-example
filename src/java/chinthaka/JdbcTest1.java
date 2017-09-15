@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 /**
  * Created by chinthaka on 9/12/17.
  */
+
+//Here I have used Encapsulation OOP concept.
 public class JdbcTest1 {
     public static Connection conn;
 

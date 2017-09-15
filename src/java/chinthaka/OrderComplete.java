@@ -14,6 +14,8 @@ import java.util.Scanner;
 /**
  * Created by chinthaka on 9/15/17.
  */
+
+//Here I have used Encapsulation and Inheritance OOP concept.
 public class OrderComplete extends HttpServlet {
 
     public static Connection conn6;
